@@ -42,7 +42,7 @@ function onLogout() {
 }
 
 function onAdded(r) {
-	$('.list-wrapper').append('<div>'+r.data.comment+'</div>')
+	$('.list-wrapper').prepend('<div style="padding: 1em; border: 1px solid #ccc">'+r.val().comment+'</div>')
 }
 
 function onSubmit(f) {
