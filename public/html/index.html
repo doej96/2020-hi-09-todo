@@ -23,6 +23,7 @@
 		<h1 class="title-wrap">
 			<i class="fa fa-tasks"></i>
 			TODO App
+			<i class="fa fa-plus-circle"></i>
 		</h1>
 		<div class="sign-wrap">
 			<div class="icon">
@@ -31,22 +32,38 @@
 			<div class="email"></div>
 			<button class="btn btn-danger" id="btLogout">
 				<i class="fa fa-sign-out-alt"></i>
-			로그아웃
 			</button>
 		</div>
 	</header>
-
+<!-- 
 	<div class="wr-wrapper">
-		<form action="#" class="wr-form" onsubmit="return onSubmit(this)">
+		<form action="#" class="wr-form" onsubmit="return onSubmit(this)"> -->
 			<!-- 버튼 누르면 submit되면서 onSubmit함수 실행됨
 			onSubmit(this) : 이 폼 자체를 보냄 -->
-			<div class="form-inline">
+		<!-- 	<div class="form-inline">
 				<input type="text" name="comment" class="form-control">
 				<button class="btn btn-primary">저장</button>
 			</div>
 		</form>
+	</div> -->
+	<div class="content-wrapper">
+		<div class="list-wrapper">
+			<div class="add-wrap">
+				<i class="fa fa-plus"></i>
+				<input type="text" id="task" class="form-control">
+			</div>
+			<ul class="list-wrap">
+				<li>
+					<i class="active far fa-circle"></i>
+					<i class="far fa-check-circle"></i>
+					<span>우유 사기</span>
+				</li>
+			</ul>
+		</div>
+		<div class="edit-wrapper">
+			<textarea id="content" class="form-control"></textarea>
+		</div>
 	</div>
-	<div class="list-wrapper"></div>
 
 	<div class="auth-wrapper modal-wrapper">
 		<button class="btn btn-danger" id="btGoogleLogin">

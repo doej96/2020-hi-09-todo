@@ -6,14 +6,27 @@ var ref = null;
 var google = new firebase.auth.GoogleAuthProvider();
 var facebook = new firebase.auth.FacebookAuthProvider();
 
-/*********** 이벤트 등록 ***********/
-auth.languageCode = 'ko';
-auth.onAuthStateChanged(onAuthChg);
-
-$('#btGoogleLogin').click(onGoogleLogin);
-$('#btLogout').click(onLogout);
+/*********** 사용자 함수 ***********/
+function dbInit() {
+	db.ref('root/todo/'+user.uid).on('child_added', onAdd);
+	db.ref('root/todo/'+user.uid).on('child_removed', onRev);
+	db.ref('root/todo/'+user.uid).on('child_changed', onChg);
+}
 
 /*********** 이벤트 콜백 ***********/
+function onAdd(r) {
+	console.log(r.val());
+}
+
+function onRev(r) {
+	console.log(r.val());
+}
+
+function onChg(r) {
+	console.log(r.val());
+}
+
+
 function onAuthChg(r) {
 	if(r) {
 		user = r;
@@ -41,20 +54,9 @@ function onLogout() {
 	auth.signOut();
 }
 
-function onAdded(r) {
-	$('.list-wrapper').prepend('<div style="padding: 1em; border: 1px solid #ccc">'+r.val().comment+'</div>')
-}
+/*********** 이벤트 등록 ***********/
+auth.languageCode = 'ko';
+auth.onAuthStateChanged(onAuthChg);
 
-function onSubmit(f) {
-	var comment = f.comment.value;
-	ref.push({
-		comment: comment  //comment: (내가 쓴 내용인)comment <- realtime database json(ref)에 저장됨
-	})
-	return false;
-}
-
-/*********** 사용자 함수 ***********/
-function dbInit() {
-	ref = db.ref('root/todo/'+user.uid);
-	ref.on('child_added', onAdded);
-}
+$('#btGoogleLogin').click(onGoogleLogin);
+$('#btLogout').click(onLogout);
