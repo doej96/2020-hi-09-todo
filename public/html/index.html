@@ -23,7 +23,6 @@
 		<h1 class="title-wrap">
 			<i class="fa fa-tasks"></i>
 			TODO App
-			<i class="fa fa-plus-circle"></i>
 		</h1>
 		<div class="sign-wrap">
 			<div class="icon">
@@ -49,15 +48,14 @@
 	<div class="content-wrapper">
 		<div class="list-wrapper">
 			<form class="add-wrap" onsubmit="return onSubmit(this);">
-				<button><i class="fa fa-plus"></i></button>
+				<button type="submit"><i class="fa fa-plus"></i></button>
 				<input type="text" name="task" class="form-control" autofocus>
 			</form>
+			<div class="text-right">
+				<a href="javascript: onDoneClick()" class="bt-done active">완료된 항목 </a>
+			</div>
 			<ul class="list-wrap">
-				<li>
-					<i class="active far fa-circle"></i>
-					<i class="far fa-check-circle"></i>
-					<span>우유 사기</span>
-				</li>
+				
 			</ul>
 		</div>
 		<div class="edit-wrapper">
