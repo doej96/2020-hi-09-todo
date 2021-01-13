@@ -63,8 +63,12 @@ function onGetTask(r) {
 function onEdit(f) {
 	var key = f.key.value;
 	var data = {task: f.task.value, comment: f.comment.value, createdAt: new Date().getTime(), checked: false};
-	if(key == "") db.ref('root/todo/'+user.uid).push(data);
-	else db.ref('root/todo/'+user.uid+'/'+key).update(data);
+	if(key == "") {
+		db.ref('root/todo/'+user.uid).push(data);
+	}
+	else {
+		db.ref('root/todo/'+user.uid+'/'+key).update(data);
+	}
 	f.key.vlaue = '';
 	f.reset();
 	return false;
