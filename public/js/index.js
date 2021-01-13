@@ -51,7 +51,6 @@ function onReset(f) {
 	$('.edit-wrapper').find('button.btn-primary').removeClass('d-none');
 	$('.edit-wrapper').find('button.btn-success').addClass('d-none');
 }
-}
 
 function onGetTask(r) {
 	$('.edit-wrapper').find('form input[name="key"]').val(r.key);
