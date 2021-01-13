@@ -23,6 +23,7 @@ function addHTML(k, v) {
 		html += '	<i class="far fa-check-circle" onclick="onCheck(this, false);"></i>';
 	}
 	html += '	<input type="text" class="ml-3" value="'+v.task+'" onchange="onChange(\''+k+'\', this);">';
+	//form만 onchange요소 가지고있음
 	html += '	<div class="date">'+moment(v.createdAt).format('llll')+'</div>';
 	html += '<button class="btn btn-sm btn-danger bt-delete" onclick="onDelete">삭제</button>';
 	html += '</li>';
