@@ -11,8 +11,12 @@
 
 .content-wrapper {width: 100%; height: calc(100vh - 70px); position: relative; display: flex;}
 .content-wrapper > div {flex: 0 0 50%; padding: 1em; height: 100%;}
-.content-wrapper .list-wrapper {background-image: linear-gradient(to right, rgb(204, 146, 146), rgb(191, 216, 163)); display: flex; flex-direction: column;}
-.list-wrapper .add-wrap {flex: 0 0; padding: 0.5em 0; background-color: rgba(255,255,255,0.4); margin: 0.25em; border-radius: 4px; display: flex; align-items: center;}
+.content-wrapper .list-wrapper {background-image: linear-gradient(to right, rgb(204, 146, 146), rgb(191, 216, 163)); display: flex; flex-direction: column; z-index: 99; transition: all 0.5s; transform: translateX(0);}
+.content-wrapper .list-wrapper.active {transform: translateX(0);}
+.content-wrapper .list-wrapper .bt-close {background-color: darkred; color: #f9f9f9; width: 40px; height: 40px; text-align: center; line-height: 40px; position: absolute; top: 1.75em; right: -40px; display: none; cursor: pointer;}
+.list-wrapper .bt-close::after {content: "〉"; display: inline-block;}
+.list-wrapper .bt-close.active::after {content: "〈"; display: inline-block;}
+.list-wrapper .add-wrap {flex: 0 0; padding: 0.5em 0; background-color: rgba(255,255,255,0.4); margin: 0.25em; border-radius: 4px; display: flex; align-items: center; height: 58px;}
 .list-wrapper .add-wrap > button {background: transparent; border: none;}
 .list-wrapper .add-wrap > button:focus {outline: none;}
 .list-wrapper .add-wrap > .fa-plus {margin-left: 0.5em; color: #f9f9f9; font-size: 1.75em;}
@@ -32,8 +36,14 @@
 
 .content-wrapper .edit-wrapper {padding: 1.5em 2em;}
 .edit-wrapper input {margin-bottom: 1em;}
-.edit-wrapper textarea {margin-bottom: 1em; height: 60vh;}
-.edit-wrapper input[name="task"] {font-size: 1.25em;}
+.edit-wrapper textarea {margin-bottom: 1em; height: 50vh;}
+.edit-wrapper .file-wrap {padding: 0.5em 0; width: auto; position: relative; display: flex; align-items: flex-start; display: none;}
+.edit-wrapper .file-wrap .image {width: 60px; cursor: pointer;}
+.edit-wrapper .file-wrap .pds {margin-right: 0.5em;}
+.edit-wrapper .file-wrap .bt-delete {padding: 0.175em 0.25em; background-color: red; color: #f9f9f9; font-size: 0.875em;}
+.edit-wrapper input[name="task"] {font-size: 1.25em; cursor: pointer;}
+
+.img-wrapper.modal-wrapper {display: none;}
 
 .bt-done {margin: 0.5em 0.25em 0 0; display: inline-block;}
 .bt-done:link,
@@ -56,7 +66,9 @@
 	#btLogout::after {content: '';}
 
 	.content-wrapper .list-wrapper {position: absolute; width: 80%; box-shadow: 3px 0 6px rgba(0,0,0,0.3);}
-	.content-wrapper .edit-wrapper {flex: 0 0 100%;}
+	.content-wrapper .list-wrapper .bt-close {display: block;}
+	.content-wrapper .edit-wrapper {flex: 0 0 100%; padding-left: 15%;}
+	.content-wrapper .list-wrapper.active {transform: translateX(-98%);}
 }
 
 @media screen and (max-width:575px) {

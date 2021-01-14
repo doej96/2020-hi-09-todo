@@ -14,6 +14,7 @@
 	<script src="/__/firebase/8.2.2/firebase-database.js"></script>
 	<script src="/__/firebase/8.2.2/firebase-storage.js"></script>
 	<script src="/__/firebase/8.2.2/firebase-analytics.js"></script>
+	<script src="/__/firebase/init.js?useEmulator=true"></script>
 	<script src="../js/jquery-3.5.1.min.js"></script>
 	<script src="../js/moment-with-locales.min.js"></script>
 </head>
@@ -25,7 +26,7 @@
 		</h1>
 		<div class="sign-wrap">
 			<div class="icon">
-				<img src="http://via.placeholder.com/36" alt="아이콘" class="mw-100">
+				<img src="//via.placeholder.com/36" alt="아이콘" class="mw-100">
 			</div>
 			<div class="email"></div>
 			<button class="btn btn-danger" id="btLogout">
@@ -57,17 +58,23 @@
 			<ul class="list-wrap">
 				
 			</ul>
+			<div class="bt-close active"></div>
 		</div>
 		<div class="edit-wrapper">
 			<form onsubmit="return onEdit(this)">
 				<input type="hidden" name="key" value="">
 				<input type="text" id="task" name="task" class="form-control" placeholder="할 일을 입력하세요.">
 				<textarea name="comment" class="form-control" placeholder="내용을 입력하세요."></textarea>
+				<div class="file-wrap">
+					<img src="//via.placeholder.com/60" alt="첨부이미지" class="image" onclick="onViewImg(this)">
+					<a href="" class="pds"></a>
+					<i class="fa fa-times bt-delete" onclick="onFileDelete(this);"></i>
+				</div>
 				<input type="file" id="upfile" class="form-control-file">
 				<hr>
-				<button class="btn btn-success d-none">저장</button> <!-- button은 inline-block -->
-				<button class="btn btn-primary">새로운 할 일 저장</button>
-				<button type="reset" class="btn btn-warning" onclick="onReset(this.form)">취소</button> <!-- 내가 포함된 폼 보내기 -->
+				<button class="btn btn-success mx-auto d-none">수정</button> <!-- button은 inline-block -->
+				<button class="btn btn-primary mx-auto">새로운 할 일 저장</button>
+				<button type="reset" class="btn btn-warning mx-auto" onclick="onReset(this.form)">취소</button> <!-- 내가 포함된 폼 보내기 -->
 			</form>
 		</div>
 	</div>
@@ -78,7 +85,13 @@
 			Google 로그인
 		</button>
 	</div>
-	<script src="/__/firebase/init.js?useEmulator=true"></script>
+
+	<div class="img-wrapper modal-wrapper">
+		<div class="mw-75">
+			<img src="" alt="이미지" class="mw-100">
+		</div>
+	</div>
+
 	<script src="../js/index.js"></script>
 </body>
 </html>
